@@ -17,11 +17,7 @@ public class LiveForexRates {
 	@JsonProperty("rates")
 	private Map<String,Object> rates;
 	
-
-	
-	public LiveForexRates()
-	{
-		
+	public LiveForexRates(){
 	}
 	public String getBase() {
 		return base;
@@ -35,28 +31,17 @@ public class LiveForexRates {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
-
-	
 	public Map<String, Object> getRates() {
 		return rates;
 	}
 	public void setRates(Map<String, Object> rates) {
 		this.rates = rates;
 	}
+	
 	@Override
 	public String toString() {
 		return "RateModel [base=" + base + ", date=" + date + ", rates=" + rates + "]";
 	}
-	
-	
-		
-
-		
-	
-
-
 	
 	
 

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import com.alien.thirdparty.utils.ForexProvider;
+import com.alien.thirdparty.utils.ForexProviderListImpl;
 
 @Configuration
 public class BeanConfig {
@@ -28,6 +29,10 @@ public class BeanConfig {
 	public Map<String, Double> getMap()
 	{
 		return new HashMap<>();
+	}
+	@Bean
+	public ForexProviderListImpl getProviderList() {
+		return new ForexProviderListImpl();
 	}
 }
 

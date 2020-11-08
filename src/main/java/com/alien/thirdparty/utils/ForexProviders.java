@@ -8,7 +8,5 @@ public interface ForexProviders {
 	ForexProviders setObject(Float value,String name,LiveForexRates obj);
 	
 	ForexProviders setObject(Double value, String name, LiveForexRates obj);
-	
-	
 
 }

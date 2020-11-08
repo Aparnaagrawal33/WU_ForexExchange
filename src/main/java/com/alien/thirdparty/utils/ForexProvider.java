@@ -4,12 +4,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.client.RestTemplate;
 
 import com.alien.thirdparty.models.LiveForexRates;
 
 
-public class ForexProvider implements ForexProviders {
-
+public class ForexProvider implements ForexProviders
+{
+	@Autowired
+	RestTemplate restTemplate;
 	
 	private String nameOfProvider=null;
 	@Autowired()
@@ -19,7 +22,6 @@ public class ForexProvider implements ForexProviders {
 	private String date;
 	
 	public ForexProvider() {
-	
 	}
 
 	public String getNameOfProvider() {
@@ -29,7 +31,6 @@ public class ForexProvider implements ForexProviders {
 	public void setNameOfProvider(String nameOfProvider) {
 		this.nameOfProvider = nameOfProvider;
 	}
-	
 
 	public Map<String, Double> getRates() {
 		return rates;
@@ -39,7 +40,6 @@ public class ForexProvider implements ForexProviders {
 		this.rates = rates;
 	}
 	
-
 	public String getBase() {
 		return base;
 	}
@@ -56,8 +56,6 @@ public class ForexProvider implements ForexProviders {
 		this.date = date;
 	}
 
-	
-
 	@Override
 	public ForexProviders setObject(Double value,String name, LiveForexRates obj) {
 		setNameOfProvider(name);
@@ -65,12 +63,9 @@ public class ForexProvider implements ForexProviders {
 		setDate(obj.getDate());
 		for(Map.Entry<String,Object> en :obj.getRates().entrySet()) {
 			this.rates.put(en.getKey(),(Double)en.getValue()+(Double)en.getValue()*value);
-		}
-				
+		}		
 		return this ;
 	}
-
-	
 
 	@Override
 	public ForexProviders setObject(Float value, String name, LiveForexRates obj) {
@@ -79,8 +74,7 @@ public class ForexProvider implements ForexProviders {
 		setDate(obj.getDate());
 		for(Map.Entry<String,Object> en :obj.getRates().entrySet()) {
 			this.rates.put(en.getKey(),(Double)en.getValue()+(Double)en.getValue()*value);
-		}
-				
+		}		
 		return this ;
 	}
 	
@@ -89,9 +83,4 @@ public class ForexProvider implements ForexProviders {
 		return "ForexProvider [nameOfProvider=" + nameOfProvider + ", rates=" + rates + ", base=" + base + ", date="
 				+ date + "]";
 	}
-	
-	
-	
-	
-
 }
